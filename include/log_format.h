@@ -1,0 +1,15 @@
+#pragma once
+
+#include <string>
+
+class LogFormat {
+
+public:
+  virtual std::string format(
+    const std::string& level,
+    const std::string& msg,
+    const std::string& filename,
+    const int line 
+  ) = 0;
+
+};
