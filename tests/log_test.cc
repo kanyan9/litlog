@@ -1,25 +1,32 @@
 #include <iostream>
 #include <string>
-#include "litlog_format.h"
-#include "litlog_print.h"
+#include "log_format_handler.h"
+#include "log_print_handler.h"
+#include "litlogger.h"
 
 using namespace std;
 
 int main(int argc, char** argv) {
-  // litlogformat test
-  LitlogFormat lf;
-  string str = lf.Format("DEBUG", "Hello log!", __FILE__, __LINE__);
+  // logformat test
+  // LogFormat lf;
+  // string str = lf.Format("DEBUG", "Hello Litlog!", __FILE__, __LINE__);
   // cout << str;
 
-  // litlogprint console
-  // litlogPrintConsole pc;
+  // logprint console
+  // PrintConsoleObj pc;
   // pc.Print(str); 
 
-  // litlogprint file
-  LitlogPrintFile pf;
-  pf.set_log_file("/tmp/log.txt");
-  pf.Print(str);
+  // logprint file
+  // PrintFileObj pf("/tmp/log");
+  // pf.Print(str);
 
+  // litlogger test
+  LitLogger ll(LitlogLevel::INFO, __FILE__, __LINE__);
+  ll.set_log_message("Hello Litlog!");
+  ll.set_log_format(new LogFormat());
+  // ll.set_log_print(new PrintConsoleObj());
+  ll.set_log_print(new PrintFileObj("/tmp/log2"));
+  ll.Logging();
   
   return 0;
 }

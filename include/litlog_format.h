@@ -1,14 +1,15 @@
-#include "log_format.h"
+#pragma once
 
-class LitlogFormat : public LogFormat {
+#include <string>
+
+class LitlogFormat {
 
 public:
-  std::string Format(
+  virtual std::string Format(
     const std::string& level,
     const std::string& msg,
     const std::string& filename,
-    const int line
-  );
+    const int line 
+  ) = 0;
 
-  virtual ~LitlogFormat() {}
 };
