@@ -3,7 +3,7 @@
 #include <chrono>
 #include "litlog_format.h"
 
-std::string LitlogFormat::format(const std::string& level,
+std::string LitlogFormat::Format(const std::string& level,
                                  const std::string& msg,
                                  const std::string& filename,
                                  const int line) {

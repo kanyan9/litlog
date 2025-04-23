@@ -23,6 +23,6 @@ void LitlogPrintFile::Print(const std::string& log) {
   ofs.close();
 }
 
-void LitlogPrintFile::SetLogFile(const std::string& filename) {
+void LitlogPrintFile::set_log_file(const std::string& filename) {
   this->log_file_ = filename;
 }

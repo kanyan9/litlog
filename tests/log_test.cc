@@ -8,7 +8,7 @@ using namespace std;
 int main(int argc, char** argv) {
   // litlogformat test
   LitlogFormat lf;
-  string str = lf.format("DEBUG", "Hello log!", __FILE__, __LINE__);
+  string str = lf.Format("DEBUG", "Hello log!", __FILE__, __LINE__);
   // cout << str;
 
   // litlogprint console
@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 
   // litlogprint file
   LitlogPrintFile pf;
-  pf.SetLogFile("/tmp/log.txt");
+  pf.set_log_file("/tmp/log.txt");
   pf.Print(str);
 
   

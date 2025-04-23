@@ -8,7 +8,7 @@ public:
 class LitlogPrintFile : public LogPrint {
 public:
   void Print(const std::string& log);
-  void SetLogFile(const std::string& filename);
+  void set_log_file(const std::string& filename);
 
 private:
   std::string log_file_ = "";

@@ -5,7 +5,7 @@
 class LogFormat {
 
 public:
-  virtual std::string format(
+  virtual std::string Format(
     const std::string& level,
     const std::string& msg,
     const std::string& filename,
