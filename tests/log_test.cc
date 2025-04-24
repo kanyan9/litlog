@@ -26,6 +26,7 @@ int main(int argc, char** argv) {
   ll.set_log_format(new LogFormat());
   // ll.set_log_print(new PrintConsoleObj());
   ll.set_log_print(new PrintFileObj("/tmp/log2"));
+  ll.set_level_threshold(LitlogLevel::ERROR);
   ll.Logging();
   
   return 0;

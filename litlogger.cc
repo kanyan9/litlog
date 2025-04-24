@@ -1,6 +1,8 @@
 #include "litlogger.h"
 
 void LitLogger::Logging() {
+  if (level_ < level_threshold_)
+    return;
   std::string level_str;
   switch (level_)
   {
