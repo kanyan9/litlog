@@ -11,27 +11,21 @@ enum class LitlogLevel {
   FATAL = 3 
 };
 
-class LitLogger {
+class Litlogger {
 public:
-  LitLogger(LitlogLevel level,
-            const std::string& filename,
-            int line) : level_(level), file_name_(filename), line_(line) {}
+  Litlogger() = default;
  
-  
-  void set_log_message(const std::string& log_message) { log_message_ = log_message; }
   void set_log_file(const std::string& log_file) { log_file_ = log_file; }
   void set_log_format(LitlogFormat* log_format) { log_format_ = log_format; }
   void set_log_print(LitlogPrint* log_print) { log_print_ = log_print; }
   void set_level_threshold(LitlogLevel level_threshold) { level_threshold_ = level_threshold; }
 
-  void Logging();
+  void Logging(LitlogLevel level,
+               const std::string& log_message,
+               const std::string& filename,
+               int line);
 
 private:
-  LitlogLevel level_ = LitlogLevel::DEBUG;
-  std::string file_name_; 
-  int line_;
-
-  std::string log_message_;
   std::string log_file_ = ""; 
   LitlogLevel level_threshold_ = LitlogLevel::DEBUG;
 

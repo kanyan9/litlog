@@ -1,10 +1,14 @@
 #include "litlogger.h"
 
-void LitLogger::Logging() {
-  if (level_ < level_threshold_)
+void Litlogger::Logging(LitlogLevel level,
+                        const std::string& log_message,
+                        const std::string& filename,
+                        int line) {
+  if (level < level_threshold_)
     return;
+
   std::string level_str;
-  switch (level_)
+  switch (level)
   {
   case LitlogLevel::INFO:
     level_str = "INFO";
@@ -18,6 +22,6 @@ void LitLogger::Logging() {
     level_str = "DEBUG";
     break;
   }
-  auto fmt_log = log_format_->Format(level_str, log_message_, file_name_, line_);
+  auto fmt_log = log_format_->Format(level_str, log_message, filename, line);
   log_print_->Print(fmt_log);
 }
