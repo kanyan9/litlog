@@ -26,7 +26,7 @@ public:
                int line);
 
 private:
-  std::string log_file_ = ""; 
+  std::string log_file_; 
   LitlogLevel level_threshold_ = LitlogLevel::DEBUG;
 
   LitlogFormat* log_format_ = nullptr;

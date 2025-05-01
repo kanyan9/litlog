@@ -1,0 +1,5 @@
+{
+  "log_type" : "file",
+  "log_level_threshold" : "0",
+  "log_file" : "/tmp/log"
+}

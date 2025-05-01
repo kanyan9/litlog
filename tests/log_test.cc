@@ -4,6 +4,7 @@
 // #include "log_print_handler.h"
 // #include "litlogger.h"
 #include "litlogger_factory.h"
+// #include "litlog_config.h"
 
 using namespace std;
 
@@ -30,8 +31,15 @@ int main(int argc, char** argv) {
   // ll.Logging(LitlogLevel::INFO, "Hello Litlog!", __FILE__, __LINE__);
 
   // litlog factory test
-  LitloggerFactory::Instance().Init("config/log_config");
-  LitloggerFactory::Instance().get_logger().Logging(LitlogLevel::DEBUG, "Hello Litlog!", __FILE__, __LINE__);
+  // LitloggerFactory::Instance().Init("config/log_config");
+  // LitloggerFactory::Instance().get_logger().Logging(LitlogLevel::DEBUG, "Hello Litlog!", __FILE__, __LINE__);
+  
+  // litlog config test
+  // LitlogConfig config;
+  // config.JsonConfigParse("../config/log_config.json");
+
+  // litlog marco test
+  LIT_LOG(INFO, "Hello Litlog!");
   
   return 0;
 }
