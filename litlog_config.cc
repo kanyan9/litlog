@@ -17,6 +17,8 @@ void LitlogConfig::JsonConfigParse(const std::string& config_file) {
   for (auto& item : data.items()) {
     config_[item.key()] = item.value();
   }
+
+  jf.close();
 }
 
 std::string LitlogConfig::get(const std::string& key) {
