@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 #include "litlogger.h"
 #include "litlog_config.h"
 #include "log_format_handler.h"
@@ -10,11 +11,10 @@
   LitloggerFactory::Instance()
 
 #define LIT_LOG_INIT(configuration) \
-  LIT_LOG_INTERNAL().Init(configuration);
+  LIT_LOG_INTERNAL().set_log_config_file(configuration)
 
-#define LIT_LOG(level, message) \
-  LIT_LOG_INIT("../config/log_config.json") \
-  LIT_LOG_INTERNAL().get_logger().Logging(LitlogLevel::level, message, __FILE__, __LINE__)
+#define LIT_LOG(level) \
+  LIT_LOG_INTERNAL().get_logger(LitlogLevel::level, __FILE__, __LINE__)->Stream()
 
 class LitloggerFactory {
 public:
@@ -23,11 +23,14 @@ public:
     return fac;
   }
 
-  void Init(const std::string& log_config_file);
+  void set_log_config_file(const std::string& log_config_file) {
+    log_config_file_ = log_config_file;
+  }
 
-  Litlogger& get_logger() { return logger_; }
+  std::unique_ptr<Litlogger> get_logger(LitlogLevel level, const std::string& filename, const int line);
 
 private:
-  LitloggerFactory() = default; 
-  Litlogger logger_;
+  std::string log_config_file_ = "../config/log_config.json";
+  LitloggerFactory() = default;
+  ~LitloggerFactory() = default;
 };

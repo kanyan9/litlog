@@ -39,7 +39,13 @@ int main(int argc, char** argv) {
   // config.JsonConfigParse("../config/log_config.json");
 
   // litlog marco test
-  LIT_LOG(INFO, "Hello Litlog!");
+  // LIT_LOG(INFO, "Hello Litlog!");
+
+  // stream-like litlog test
+  LIT_LOG(INFO) << "Hello Litlog!";
+  LIT_LOG(DEBUG) << "x";
+  LIT_LOG(FATAL) << 666;
+  LIT_LOG(ERROR) << "Litlog" << " " << "error";
   
   return 0;
 }
